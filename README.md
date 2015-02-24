@@ -27,6 +27,7 @@ automatically in Rails applications.
 * Rails 2.1 or later for Production Mode
 * Rails 2.3 or later for Developer Mode
 * Sinatra
+* Cuba
 * Rack
 
 An up to date list of Ruby versions and frameworks for the latest agent
@@ -101,6 +102,20 @@ staging, production, etc.
 To use Developer Mode in Sinatra, add `NewRelic::Rack::DeveloperMode` to
 the middleware stack.  See the `config.ru` sample below.
 
+#### Cuba Installation
+To use the Ruby Agent with a Cuba app, add
+
+    require 'newrelic_rpm'
+
+in your Cuba app, below the Cuba require directive.
+
+Then make sure you set `RACK_ENV` to the environment corresponding to the
+configuration definitions in the newrelic.yml file; e.g., development,
+staging, production, etc.
+
+To use Developer Mode in Cuba, add `NewRelic::Rack::DeveloperMode` to
+the middleware stack.  See the `config.ru` sample below.
+
 #### Other Environments
 
 You can use the Ruby Agent to monitor any Ruby application.  Add
@@ -152,7 +167,7 @@ a `config.ru` as below.
 #### Developer Mode in Rack Applications
 
 Developer Mode is available for any Rack based application such as
-Sinatra by installing the NewRelic::Rack::DeveloperMode
+Sinatra and Cuba by installing the NewRelic::Rack::DeveloperMode
 middleware. This middleware passes all requests that do not start with
 /newrelic.
 
